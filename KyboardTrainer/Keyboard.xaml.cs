@@ -23,7 +23,16 @@ namespace KeyboardTrainer
         public Keyboard()
         {
             InitializeComponent();
-            
+        }
+        public IEnumerable<Button> GetKeys() 
+        {
+            foreach (var grid in Board.Children.OfType<Grid>())    
+            {
+                foreach (var button in grid.Children.OfType<Button>())
+                {
+                    yield return button;
+                }
+            }
         }
     }
 }

@@ -5,23 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KeyboardTrainer"
              mc:Ignorable="d" 
-             MinHeight="300"
-             >
+             MinHeight="250" MinWidth="800"  Width ="800" VerticalAlignment="Center" HorizontalAlignment="Center" 
+>
     <UserControl.Resources>
+
         <Style TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid>
+
                             <Border Background="{TemplateBinding Background}" 
+                                    Margin="3"
                                     Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"
-                                    BorderThickness="5" BorderBrush="Black" CornerRadius="10"/>
-                            <DockPanel Name="myContentPresenterDockPanel">
-                                <ContentPresenter x:Name="Content" Margin="20"    
+                                    BorderThickness="2" BorderBrush="Black" CornerRadius="10"/>
+
+                                <DockPanel>
+                                <ContentPresenter x:Name="Content" Margin="5 2"    
                                                   Content="{TemplateBinding  Content}"    
-                                                  TextBlock.Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"
-                                                  TextBlock.FontSize="30" 
-                                                  TextBlock.FontStretch="UltraCondensed" Height="{TemplateBinding Height}"
+                                                  TextBlock.Foreground="Black" 
+                                                  VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                  TextBlock.FontStretch="UltraCondensed" TextBlock.FontSize="14"
                                 />
                             </DockPanel>
                         </Grid>
@@ -30,87 +34,157 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="Background" Value="Gray"/>
-            <Setter Property="MinWidth" Value="80"/>
+            <Setter Property="MinWidth" Value="50"/>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid x:Name="Board">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
+
         </Grid.RowDefinitions>
-        <DockPanel>
-            <Button Background="Red">`</Button>
-            <Button Background="Red">1</Button>
-            <Button Background="Red">2</Button>
-            <Button Background="Red">3</Button>
-            <Button Background="Red">4</Button>
-            <Button Background="Red">5</Button>
-            <Button Background="Red">6</Button>
-            <Button Background="Red">7</Button>
-            <Button Background="Red">8</Button>
-            <Button Background="Red">9</Button>
-            <Button Background="Red">0</Button>
-            <Button Background="Red">-</Button>
-            <Button Background="Red">=</Button>
-            <Button Background="Red">BackSpace</Button>
-        </DockPanel>
-        <DockPanel Grid.Row="1">
-            <Button Background="Red" MinWidth ="130">Tab</Button>
-            <Button Background="Red">q</Button>
-            <Button Background="Red">w</Button>
-            <Button Background="Red">e</Button>
-            <Button Background="Red">r</Button>
-            <Button Background="Red">t</Button>
-            <Button Background="Red">y</Button>
-            <Button Background="Red">u</Button>
-            <Button Background="Red">i</Button>
-            <Button Background="Red">o</Button>
-            <Button Background="Red">p</Button>
-            <Button Background="Red">[</Button>
-            <Button Background="Red">]</Button>
-            <Button Background="Red" MinWidth ="130">\</Button>
-        </DockPanel>
-        <DockPanel  Grid.Row="2" >
-            <Button Background="Red">Caps Lock</Button>
-            <Button Background="Red">a</Button>
-            <Button Background="Red">s</Button>
-            <Button Background="Red">d</Button>
-            <Button Background="Red">f</Button>
-            <Button Background="Red">g</Button>
-            <Button Background="Red">h</Button>
-            <Button Background="Red">j</Button>
-            <Button Background="Red">k</Button>
-            <Button Background="Red">l</Button>
-            <Button Background="Red">;</Button>
-            <Button Background="Red">'</Button>
-            <Button Background="Red" MinWidth ="160">Enter</Button>
-        </DockPanel>
-        <DockPanel Grid.Row="3">
-            <Button Background="Red" MinWidth="210">Shift</Button>
-            <Button Background="Red">z</Button>
-            <Button Background="Red">x</Button>
-            <Button Background="Red">c</Button>
-            <Button Background="Red">v</Button>
-            <Button Background="Red">b</Button>
-            <Button Background="Red">n</Button>
-            <Button Background="Red">m</Button>
-            <Button Background="Red">,</Button>
-            <Button Background="Red">.</Button>
-            <Button Background="Red">/</Button>
-            <Button Background="Red" MinWidth="210">Shift</Button>
-        </DockPanel>
-        <DockPanel Grid.Row="4">
-            <Button Background="Red" MinWidth="150">Ctrl</Button>
-            <Button Background="Red" MinWidth="100">Win</Button>
-            <Button Background="Red" MinWidth="100">Alt</Button>
-            <Button Background="Red" MinWidth="560">Space</Button>
-            <Button Background="Red" MinWidth="100">Alt</Button>
-            <Button Background="Red" MinWidth="100">Win</Button>
-            <Button Background="Red" MinWidth="100">Ctrl</Button>
-        </DockPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="1.9*"/> <!--Backspace-->
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Oem3" Grid.Column="0" Tag="print">`</Button>
+            <Button x:Name="D1" Grid.Column="1" Tag="print">1</Button>
+            <Button x:Name="D2" Grid.Column="2" Tag="print">2</Button>
+            <Button x:Name="D3" Grid.Column="3" Tag="print">3</Button>
+            <Button x:Name="D4" Grid.Column="4" Tag="print">4</Button>
+            <Button x:Name="D5" Grid.Column="5" Tag="print">5</Button>
+            <Button x:Name="D6" Grid.Column="6" Tag="print">6</Button>
+            <Button x:Name="D7" Grid.Column="7" Tag="print">7</Button>
+            <Button x:Name="D8" Grid.Column="8" Tag="print">8</Button>
+            <Button x:Name="D9" Grid.Column="9" Tag="print">9</Button>
+            <Button x:Name="D0" Grid.Column="10" Tag="print">0</Button>
+            <Button x:Name="OemMinus" Grid.Column="11" Tag="print">-</Button>
+            <Button x:Name="OemPlus" Grid.Column="12" Tag="print">=</Button>
+            <Button Grid.Column="13" x:Name="Back" Tag="command">BackSpace</Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.4*"/> <!--Tab-->
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="1.5*"/> <!--Slash-->
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="Tab" Tag="command" >Tab</Button>
+            <Button x:Name="Q" Grid.Column="1" Tag="print">q</Button>
+            <Button x:Name="W" Grid.Column="2" Tag="print">w</Button>
+            <Button x:Name="E" Grid.Column="3" Tag="print">e</Button>
+            <Button x:Name="R" Grid.Column="4" Tag="print">r</Button>
+            <Button x:Name="T" Grid.Column="5" Tag="print">t</Button>
+            <Button x:Name="Y" Grid.Column="6" Tag="print">y</Button>
+            <Button x:Name="U" Grid.Column="7" Tag="print">u</Button>
+            <Button x:Name="I" Grid.Column="8" Tag="print">i</Button>
+            <Button x:Name="O" Grid.Column="9" Tag="print">o</Button>
+            <Button x:Name="P" Grid.Column="10" Tag="print">p</Button>
+            <Button x:Name="OemOpenBrackets" Grid.Column="11" Tag="print">[</Button>
+            <Button x:Name="Oem6" Grid.Column="12" Tag="print">]</Button>
+            <Button x:Name="Oem5" Grid.Column="13" Tag="print">\</Button>
+        </Grid>
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/> <!--Caps-->
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2.2*"/> <!--Enter-->
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="Capital" Tag="command">Caps Lock</Button>
+            <Button x:Name="A" Grid.Column="1" Tag="print">a</Button>
+            <Button x:Name="S" Grid.Column="2" Tag="print">s</Button>
+            <Button x:Name="D" Grid.Column="3" Tag="print">d</Button>
+            <Button x:Name="F" Grid.Column="4" Tag="print">f</Button>
+            <Button x:Name="G" Grid.Column="5" Tag="print">g</Button>
+            <Button x:Name="H" Grid.Column="6" Tag="print">h</Button>
+            <Button x:Name="J" Grid.Column="7" Tag="print">j</Button>
+            <Button x:Name="K" Grid.Column="8" Tag="print">k</Button>
+            <Button x:Name="L" Grid.Column="9" Tag="print">l</Button>
+            <Button x:Name="Oem1" Grid.Column="10" Tag="print">;</Button>
+            <Button x:Name="OemQuotes" Grid.Column="11" Tag="print">'</Button>
+            <Button Grid.Column="12" x:Name="Return" Tag="command">Enter</Button>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.7*"/> <!--Shift-->
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2.7*"/> <!--Shift-->
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="LeftShift" Tag="command" >Shift</Button>
+            <Button x:Name="Z" Grid.Column="1" Tag="print">z</Button>
+            <Button x:Name="X" Grid.Column="2" Tag="print">x</Button>
+            <Button x:Name="C" Grid.Column="3" Tag="print">c</Button>
+            <Button x:Name="V" Grid.Column="4" Tag="print">v</Button>
+            <Button x:Name="B" Grid.Column="5" Tag="print">b</Button>
+            <Button x:Name="N" Grid.Column="6" Tag="print">n</Button>
+            <Button x:Name="M" Grid.Column="7" Tag="print">m</Button>
+            <Button x:Name="OemComma" Grid.Column="8" Tag="print">,</Button>
+            <Button x:Name="OemPeriod" Grid.Column="9" Tag="print">.</Button>
+            <Button x:Name="OemQuestion" Grid.Column="10" Tag="print">/</Button>
+            <Button Grid.Column="11" x:Name="RightShift" Tag="command">Shift</Button>
+        </Grid>
+        <Grid Grid.Row="4" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4*"/> <!--Space-->
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="LeftCtrl" Tag="command">Ctrl</Button>
+            <Button Grid.Column="1" x:Name="LWin" Tag="command" >Win</Button>
+            <Button Grid.Column="2" x:Name="LAlt" Tag="command" >Alt</Button>
+            <Button Grid.Column="3" x:Name="Space" Tag="print" >Space</Button>
+            <Button Grid.Column="4" x:Name="RAlt" Tag="command" >Alt</Button>
+            <Button Grid.Column="5" x:Name="RWin" Tag="command" >Win</Button>
+            <Button Grid.Column="6" x:Name="RightCtrl" Tag="command" >Ctrl</Button>
+        </Grid>
     </Grid>
 </UserControl>

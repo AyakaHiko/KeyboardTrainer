@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KeyboardTrainer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
     <Grid>
-        <local:Keyboard/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <local:Keyboard x:Name="Keyboard" Grid.Row="2" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="TextEnter" Height="200" FontSize="16" TextWrapping="Wrap"/>
+
     </Grid>
 </Window>
