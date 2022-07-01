@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="KeyboardTrainer.Keyboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KeyboardTrainer"
+             mc:Ignorable="d" 
+             MinHeight="300"
+             >
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border Background="{TemplateBinding Background}" 
+                                    Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"
+                                    BorderThickness="5" BorderBrush="Black" CornerRadius="10"/>
+                            <DockPanel Name="myContentPresenterDockPanel">
+                                <ContentPresenter x:Name="Content" Margin="20"    
+                                                  Content="{TemplateBinding  Content}"    
+                                                  TextBlock.Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                  TextBlock.FontSize="30" 
+                                                  TextBlock.FontStretch="UltraCondensed" Height="{TemplateBinding Height}"
+                                />
+                            </DockPanel>
+                        </Grid>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="MinWidth" Value="80"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Button Background="Red">`</Button>
+            <Button Background="Red">1</Button>
+            <Button Background="Red">2</Button>
+            <Button Background="Red">3</Button>
+            <Button Background="Red">4</Button>
+            <Button Background="Red">5</Button>
+            <Button Background="Red">6</Button>
+            <Button Background="Red">7</Button>
+            <Button Background="Red">8</Button>
+            <Button Background="Red">9</Button>
+            <Button Background="Red">0</Button>
+            <Button Background="Red">-</Button>
+            <Button Background="Red">=</Button>
+            <Button Background="Red">BackSpace</Button>
+        </DockPanel>
+        <DockPanel Grid.Row="1">
+            <Button Background="Red" MinWidth ="130">Tab</Button>
+            <Button Background="Red">q</Button>
+            <Button Background="Red">w</Button>
+            <Button Background="Red">e</Button>
+            <Button Background="Red">r</Button>
+            <Button Background="Red">t</Button>
+            <Button Background="Red">y</Button>
+            <Button Background="Red">u</Button>
+            <Button Background="Red">i</Button>
+            <Button Background="Red">o</Button>
+            <Button Background="Red">p</Button>
+            <Button Background="Red">[</Button>
+            <Button Background="Red">]</Button>
+            <Button Background="Red" MinWidth ="130">\</Button>
+        </DockPanel>
+        <DockPanel  Grid.Row="2" >
+            <Button Background="Red">Caps Lock</Button>
+            <Button Background="Red">a</Button>
+            <Button Background="Red">s</Button>
+            <Button Background="Red">d</Button>
+            <Button Background="Red">f</Button>
+            <Button Background="Red">g</Button>
+            <Button Background="Red">h</Button>
+            <Button Background="Red">j</Button>
+            <Button Background="Red">k</Button>
+            <Button Background="Red">l</Button>
+            <Button Background="Red">;</Button>
+            <Button Background="Red">'</Button>
+            <Button Background="Red" MinWidth ="160">Enter</Button>
+        </DockPanel>
+        <DockPanel Grid.Row="3">
+            <Button Background="Red" MinWidth="210">Shift</Button>
+            <Button Background="Red">z</Button>
+            <Button Background="Red">x</Button>
+            <Button Background="Red">c</Button>
+            <Button Background="Red">v</Button>
+            <Button Background="Red">b</Button>
+            <Button Background="Red">n</Button>
+            <Button Background="Red">m</Button>
+            <Button Background="Red">,</Button>
+            <Button Background="Red">.</Button>
+            <Button Background="Red">/</Button>
+            <Button Background="Red" MinWidth="210">Shift</Button>
+        </DockPanel>
+        <DockPanel Grid.Row="4">
+            <Button Background="Red" MinWidth="150">Ctrl</Button>
+            <Button Background="Red" MinWidth="100">Win</Button>
+            <Button Background="Red" MinWidth="100">Alt</Button>
+            <Button Background="Red" MinWidth="560">Space</Button>
+            <Button Background="Red" MinWidth="100">Alt</Button>
+            <Button Background="Red" MinWidth="100">Win</Button>
+            <Button Background="Red" MinWidth="100">Ctrl</Button>
+        </DockPanel>
+    </Grid>
+</UserControl>
