@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KeyboardTrainer"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             MinWidth="800"
+             
+             >
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="20"></Setter>
@@ -16,11 +18,11 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition MinHeight="50"/>
-            <RowDefinition MinHeight="50"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
-        <Grid >
+        <Grid x:Name="grid" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -28,25 +30,29 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0.1*" MinHeight="30"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="Speed" Text="Speed" VerticalAlignment="Center"/>
+            <DockPanel>
+                <TextBlock Text="Speed" VerticalAlignment="Center"/>
+                <TextBlock x:Name="Speed" FontWeight="Bold" Text="0" Margin ="5"  VerticalAlignment="Center"/>
+                <TextBlock Text="chars/min" VerticalAlignment="Center"/>
+            </DockPanel>
             <DockPanel Grid.Column="1">
                 <TextBlock Text="Fails" VerticalAlignment="Center" Margin="2"/>
-                <TextBlock x:Name="Fails" FontWeight="Bold" Text="0" Margin="5 2" VerticalAlignment="Center"/>
+                <TextBlock x:Name="Fails" FontWeight="Bold" Text="0" Margin="5 2" VerticalAlignment="Center" />
             </DockPanel>
             <DockPanel Grid.Column="2" VerticalAlignment="Center">
                 <Label x:Name="DifficultyLabel" Content="Difficulty"/>
                 <TextBlock VerticalAlignment="Center" x:Name="DifficultyValue" Text="{Binding ElementName=DifficultySlider,Path=Value}" Margin="5 2" FontWeight="Bold"/>
                 <Slider x:Name="DifficultySlider" VerticalAlignment="Center" SmallChange="1" IsSnapToTickEnabled ="True" TickFrequency ="1" Minimum="1"/>
             </DockPanel>
-            <CheckBox Grid.Column="3" VerticalAlignment="Center" Margin="20" x:Name="Sensitive">Case Sensitive</CheckBox>
-            <Button x:Name="StartBtn" Content="Start" Click="Start_Click" Grid.Row="1" Grid.Column="2"/>
-            <Button x:Name="StopBtn" Content="Stop" Click="Stop_Click" Grid.Row="1" Grid.Column="3" />
+            <CheckBox Grid.Column="3"  VerticalAlignment="Center" Margin="2 0" x:Name="Sensitive">Case Sensitive</CheckBox>
+            <Button x:Name="StartBtn" Content="Start" Click="Start_Click" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
+            <Button x:Name="StopBtn" Content="Stop" Click="Stop_Click" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" IsEnabled="False"/>
         </Grid>
         <Border x:Name="Indicator" Grid.Row="1" Grid.RowSpan="2" Background="Aquamarine" HorizontalAlignment="Left" Width="{TemplateBinding TextBox.ActualWidth}"/>
-        <TextBlock Style="{StaticResource FontStyle}"  Grid.Row="1" x:Name="TaskText" Text="2eijdoiwejdo  ijdowjdowie jdowiej dowiejd"/>
-        <TextBox  Style="{StaticResource FontStyle}" x:Name="TextEnter" Grid.Row="2" AcceptsTab="True" IsEnabled="True" Background="Transparent" BorderBrush="Transparent" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left"/>
+        <TextBlock Style="{StaticResource FontStyle}"  Grid.Row="1" x:Name="TaskText" TextWrapping="Wrap"/>
+        <TextBox  Style="{StaticResource FontStyle}" BorderThickness="0" x:Name="TextEnter" TextWrapping="Wrap" Grid.Row="2" AcceptsTab="True" IsEnabled="True" Background="Transparent" BorderBrush="Transparent" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left"/>
     </Grid>
 </UserControl>

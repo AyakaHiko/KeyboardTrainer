@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KeyboardTrainer"
              mc:Ignorable="d" 
-             MinHeight="250" MinWidth="800"  Width ="800" VerticalAlignment="Center" HorizontalAlignment="Center" 
+             MinHeight="150" MinWidth="750"
+             VerticalAlignment="Center" HorizontalAlignment="Center" 
 >
     <UserControl.Resources>
 
