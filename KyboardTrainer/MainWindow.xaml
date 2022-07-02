@@ -9,12 +9,10 @@
         Title="MainWindow" Height="600" Width="800" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
-        <local:Keyboard x:Name="Keyboard" Grid.Row="2" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="TextEnter" Height="200" FontSize="16" TextWrapping="Wrap"/>
-
+        <local:Keyboard x:Name="Keyboard" Grid.Row="1" VerticalAlignment="Bottom"/>
+        <local:Trainer/>
     </Grid>
 </Window>
