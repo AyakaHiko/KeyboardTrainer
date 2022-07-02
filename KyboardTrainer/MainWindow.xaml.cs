@@ -24,11 +24,11 @@ namespace KeyboardTrainer
         public MainWindow()
         {
             InitializeComponent();
-            if (System.Windows.Input.Keyboard.IsKeyToggled(Key.CapsLock))
+            if (_isCapitalKey)
                 _toUpperLetters();
             _setColors();
         }
-
+        private bool _isCapitalKey => System.Windows.Input.Keyboard.IsKeyToggled(Key.CapsLock);
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             foreach (var button in Keyboard.GetKeys())
@@ -47,77 +47,27 @@ namespace KeyboardTrainer
 
                 if (e.Key == Key.Capital)
                 {
-                    if (!System.Windows.Input.Keyboard.IsKeyToggled(Key.CapsLock))
-                        _toLower();
+                    if (!_isCapitalKey)
+                        _upDownLetters(false);
                     else
                         _toUpperLetters();
-
                 }
 
             }
-
         }
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
             foreach (var button in Keyboard.GetKeys())
             {
-                if (button.Name != e.Key.ToString())continue;
-                    button.Opacity = 1;
+                if (button.Name != e.Key.ToString()) continue;
+                button.Opacity = 1; break;
             }
             if (e.Key == Key.LeftShift || e.Key == Key.RightShift)
-                _toLower();
-        }
-
-        private void _toUpperSymbols()
-        {
-            foreach (var button in Keyboard.GetKeys())
             {
-                if (button.Tag.ToString() != "print") continue;
-                switch (button.Name)
-                {
-                    case "D1":
-                        button.Content = "!"; break;
-                    case "D2":
-                        button.Content = "@"; break;
-                    case "D3":
-                        button.Content = "#"; break;
-                    case "D4":
-                        button.Content = "$"; break;
-                    case "D5":
-                        button.Content = "%"; break;
-                    case "D6":
-                        button.Content = "^"; break;
-                    case "D7":
-                        button.Content = "&"; break;
-                    case "D8":
-                        button.Content = "*"; break;
-                    case "D9":
-                        button.Content = "("; break;
-                    case "D0":
-                        button.Content = ")"; break;
-                    case "OemMinus":
-                        button.Content = "_"; break;
-                    case "OemPlus":
-                        button.Content = "+"; break;
-                    case "OemOpenBrackets":
-                        button.Content = "{"; break;
-                    case "Oem6":
-                        button.Content = "}"; break;
-                    case "Oem5":
-                        button.Content = "|"; break;
-                    case "Oem1":
-                        button.Content = ":"; break;
-                    case "Oem3":
-                        button.Content = "~"; break;
-                    case "OemQuotes":
-                        button.Content = "\""; break;
-                    case "OemComma":
-                        button.Content = "<"; break;
-                    case "OemPeriod":
-                        button.Content = ">"; break;
-                    case "OemQuestion":
-                        button.Content = "?"; break;
-                }
+                if (_isCapitalKey)
+                    _upDownSymbols(false);
+                else
+                    _toLowerExtended();
             }
         }
         private void _toUpperLetters()
@@ -130,10 +80,15 @@ namespace KeyboardTrainer
         }
         private void _toUpperExtended()
         {
-            _toUpperLetters();
-            _toUpperSymbols();
+            _upDownLetters();
+            _upDownSymbols();
         }
-        private void _toLower()
+        private void _toLowerExtended()
+        {
+            _upDownSymbols(false);
+            _upDownLetters(false);
+        }
+        private void _upDownSymbols(bool toUpper = true)
         {
             foreach (var button in Keyboard.GetKeys())
             {
@@ -141,52 +96,165 @@ namespace KeyboardTrainer
                 switch (button.Name)
                 {
                     case "D1":
+                        if (toUpper)
+                        {
+                            button.Content = "!";
+                            break;
+                        }
                         button.Content = "1"; break;
                     case "D2":
+                        if (toUpper)
+                        {
+                            button.Content = "@";
+                            break;
+                        }
                         button.Content = "2"; break;
                     case "D3":
+                        if (toUpper)
+                        {
+                            button.Content = "#";
+                            break;
+                        }
                         button.Content = "3"; break;
                     case "D4":
+                        if (toUpper)
+                        {
+                            button.Content = "$";
+                            break;
+                        }
                         button.Content = "4"; break;
                     case "D5":
+                        if (toUpper)
+                        {
+                            button.Content = "%";
+                            break;
+                        }
                         button.Content = "5"; break;
                     case "D6":
+                        if (toUpper)
+                        {
+                            button.Content = "^";
+                            break;
+                        }
+
                         button.Content = "6"; break;
                     case "D7":
+                        if (toUpper)
+                        {
+                            button.Content = "&";
+                            break;
+                        }
                         button.Content = "7"; break;
                     case "D8":
+                        if (toUpper)
+                        {
+                            button.Content = "*";
+                            break;
+                        }
                         button.Content = "8"; break;
                     case "D9":
+                        if (toUpper)
+                        {
+                            button.Content = "(";
+                            break;
+                        }
                         button.Content = "9"; break;
                     case "D0":
+                        if (toUpper)
+                        {
+                            button.Content = ")";
+                            break;
+                        }
                         button.Content = "0"; break;
                     case "OemMinus":
+                        if (toUpper)
+                        {
+                            button.Content = "_";
+                            break;
+                        }
                         button.Content = "-"; break;
                     case "OemPlus":
+                        if (toUpper)
+                        {
+                            button.Content = "+";
+                            break;
+                        }
                         button.Content = "="; break;
                     case "OemOpenBrackets":
+                        if (toUpper)
+                        {
+                            button.Content = "{";
+                            break;
+                        }
                         button.Content = "["; break;
                     case "Oem6":
+                        if (toUpper)
+                        {
+                            button.Content = "}";
+                            break;
+                        }
                         button.Content = "]"; break;
                     case "Oem5":
+                        if (toUpper)
+                        {
+                            button.Content = "|";
+                            break;
+                        }
                         button.Content = "\\"; break;
                     case "Oem1":
+                        if (toUpper)
+                        {
+                            button.Content = ":";
+                            break;
+                        }
                         button.Content = ";"; break;
                     case "Oem3":
+                        if (toUpper)
+                        {
+                            button.Content = "~";
+                            break;
+                        }
+
                         button.Content = "`"; break;
                     case "OemQuotes":
+                        if (toUpper)
+                        {
+                            button.Content = "\"";
+                            break;
+                        }
                         button.Content = "'"; break;
                     case "OemComma":
+                        if (toUpper)
+                        {
+                            button.Content = "<";
+                            break;
+                        }
                         button.Content = ","; break;
                     case "OemPeriod":
+                        if (toUpper)
+                        {
+                            button.Content = ">";
+                            break;
+                        }
                         button.Content = "."; break;
                     case "OemQuestion":
+                        if (toUpper)
+                        {
+                            button.Content = "?";
+                            break;
+                        }
                         button.Content = "/"; break;
-                    default: button.Content = button.Content.ToString().ToLower(); break;
                 }
             }
         }
-
+        private void _upDownLetters(bool toUpper = true)
+        {
+            foreach (var button in Keyboard.GetKeys())
+            {
+                if (button.Tag.ToString() != "print" || button.Name == "Space") continue;
+                button.Content = toUpper ? button.Content.ToString().ToUpper() : button.Content.ToString().ToLower();
+            }
+        }
         private void _setColors()
         {
             foreach (var button in Keyboard.GetKeys())
@@ -249,12 +317,8 @@ namespace KeyboardTrainer
                         button.Background = Brushes.Orange; break;
                     default:
                         button.Background = Brushes.Gray; break;
-
-
                 }
             }
         }
-
-
     }
 }
