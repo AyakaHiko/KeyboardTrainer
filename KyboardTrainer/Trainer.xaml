@@ -51,8 +51,14 @@
             <Button x:Name="StartBtn" Content="Start" Click="Start_Click" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
             <Button x:Name="StopBtn" Content="Stop" Click="Stop_Click" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" IsEnabled="False"/>
         </Grid>
-        <Border x:Name="Indicator" Grid.Row="1" Grid.RowSpan="2" Background="Aquamarine" HorizontalAlignment="Left" Width="{TemplateBinding TextBox.ActualWidth}"/>
-        <TextBlock Style="{StaticResource FontStyle}"  Grid.Row="1" x:Name="TaskText" TextWrapping="Wrap"/>
-        <TextBox  Style="{StaticResource FontStyle}" BorderThickness="0" x:Name="TextEnter" TextWrapping="Wrap" Grid.Row="2" AcceptsTab="True" IsEnabled="True" Background="Transparent" BorderBrush="Transparent" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left"/>
+        <ProgressBar x:Name="Indicator"  Opacity="0.3" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" Background="Transparent"/>
+        
+        <ScrollViewer Grid.Row="1" MaxHeight="50" Padding="5 0">
+            <TextBlock Style="{StaticResource FontStyle}"  x:Name="TaskText" TextWrapping="Wrap"/>
+        </ScrollViewer>
+        <Border Grid.Row="2" BorderBrush="Black" Background="Transparent" BorderThickness="0 1 0 0"/>
+        <ScrollViewer Grid.Row="2" MaxHeight="50" Padding="5 0" Margin="0 1">
+            <TextBox  Style="{StaticResource FontStyle}" BorderThickness="0" x:Name="TextEnter" TextWrapping="Wrap" Grid.Row="2" AcceptsTab="True" IsEnabled="False" Background="Transparent" BorderBrush="Transparent" TextChanged="TextBox_TextChanged" HorizontalAlignment="Stretch" SelectionBrush="#FF7CACD2"/>
+        </ScrollViewer>
     </Grid>
 </UserControl>

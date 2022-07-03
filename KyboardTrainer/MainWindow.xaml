@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:KeyboardTrainer"
         mc:Ignorable="d"
         Background="LightYellow"
-        Title="MainWindow" Height="445" Width="800" 
-        MinHeight="330" MinWidth="800"
-        KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
+        Title="MainWindow" Height="445" Width="900" 
+        MinHeight="330" MinWidth="900"
+        KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" LostFocus="Window_LostFocus">
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

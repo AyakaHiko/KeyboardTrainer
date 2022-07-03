@@ -33,7 +33,6 @@ namespace KeyboardTrainer
         {
             foreach (var button in Keyboard.GetKeys())
             {
-
                 if (button.Name != e.Key.ToString()) continue;
                 SolidColorBrush b = button.Background as SolidColorBrush;
                 Color newColor = Color.FromArgb(b.Color.A,
@@ -52,7 +51,7 @@ namespace KeyboardTrainer
                     else
                         _toUpperLetters();
                 }
-
+                break;
             }
         }
         private void Window_KeyUp(object sender, KeyEventArgs e)
@@ -319,6 +318,17 @@ namespace KeyboardTrainer
                         button.Background = Brushes.Gray; break;
                 }
             }
+        }
+        private void _rebootKb()
+        {
+            foreach (var button in Keyboard.GetKeys())
+            {
+                button.Opacity = 1;
+            }
+        }
+        private void Window_LostFocus(object sender, RoutedEventArgs e)
+        {
+            _rebootKb();
         }
     }
 }

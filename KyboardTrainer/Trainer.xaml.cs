@@ -62,8 +62,8 @@ namespace KeyboardTrainer
         }
         private void _updateIndicator(object sender, EventArgs e)
         {
-            Indicator.Width = TextEnter.ExtentWidth;
-            Indicator.Background = _checkText() ? _correct : _incorrect;
+            Indicator.Value = TextEnter.Text.Length;
+            Indicator.Foreground = _checkText() ? _correct : _incorrect;
         }
         private void _updateFails(object sender, EventArgs e)
         {
@@ -129,6 +129,7 @@ namespace KeyboardTrainer
             DifficultySlider.IsEnabled = false;
             StartBtn.IsEnabled = false;
             TaskText.Text = _generateText();
+            Indicator.Maximum = TaskText.Text.Length-1;
             TextEnter.Focus();
             _watch.Start();
         }
@@ -167,7 +168,7 @@ namespace KeyboardTrainer
         {
             Speed.Text = "0";
             Fails.Text = "0";
-            Indicator.Width = 0;
+            Indicator.Value = 0;
             TaskText.Text = "";
             TextEnter.Text = "";
         }
