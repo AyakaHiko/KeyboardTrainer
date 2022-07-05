@@ -14,12 +14,11 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid>
 
                             <Border Background="{TemplateBinding Background}" 
                                     Margin="3"
                                     Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"
-                                    BorderThickness="2" BorderBrush="Black" CornerRadius="10"/>
+                                    BorderThickness="2" BorderBrush="Black" CornerRadius="10">
 
                                 <DockPanel>
                                 <ContentPresenter x:Name="Content" Margin="5 2"    
@@ -29,7 +28,7 @@
                                                   TextBlock.FontStretch="UltraCondensed" TextBlock.FontSize="14"
                                 />
                             </DockPanel>
-                        </Grid>
+                        </Border>
                     </ControlTemplate>
 
                 </Setter.Value>
